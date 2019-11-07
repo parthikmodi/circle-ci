@@ -2,14 +2,16 @@
 #
 # Check https://circleci.com/docs/2.0/language-ruby/ for more details
 #
+
 version: 2
 jobs:
   build:
     docker:
       - image: parthikmodi/tts
     steps:
+      - checkout
       - run:
           name: Deploy app to Digital Ocean Server via Docker
           command: |
-           sudo chmod 600 deploy_key && ssh -o StrictHostKeyChecking=no -i deploy_key texttrack@68.183.197.37 sudo /usr/local/circleci/deploy.sh
-            
+           chmod 600 deploy_key && ssh -o StrictHostKeyChecking=no -i deploy_key texttrack@68.183.197.37 sudo /usr/local/circleci/deploy.sh
+             
