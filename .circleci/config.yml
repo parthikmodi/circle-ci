@@ -11,5 +11,5 @@ jobs:
       - run:
           name: Deploy app to Digital Ocean Server via Docker
           command: |
-            chmod 600 ./deploy_key && ssh -o StrictHostKeyChecking=no -i ./deploy_key texttrack@68.183.197.37 sudo /usr/local/circleci/deploy.sh
+            ssh -o StrictHostKeyChecking=no -i ./deploy_key texttrack@68.183.197.37 sudo /usr/local/circleci/deploy.sh
             
