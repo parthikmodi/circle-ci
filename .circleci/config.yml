@@ -5,6 +5,8 @@
 version: 2
 jobs:
   build:
+    docker:
+      - image: parthikmodi/tts
     steps:
       - run:
           name: Deploy app to Digital Ocean Server via Docker
