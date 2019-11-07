@@ -4,10 +4,8 @@
 #
 version: 2
 jobs:
+  build:
     steps:
-      # Download and cache dependencies
-      
-      # run tests!
       - run:
           name: Deploy app to Digital Ocean Server via Docker
           command: |
