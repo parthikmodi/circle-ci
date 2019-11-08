@@ -6,16 +6,12 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: parthikmodi/tts
+    machine: true
     steps:
       - checkout
-      - run:
-          name: building docker image
-          command: |
-            docker build -t tts .
-            docker images
-            docker tag tts $DOCKER_USERNAME/tts
+      - run:  docker build -t tts .
+              docker images
+              docker tag tts $DOCKER_USERNAME/tts
       - run:
           name: pushing docker image
           command: |
