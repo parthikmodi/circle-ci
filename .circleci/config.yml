@@ -11,7 +11,16 @@ jobs:
     steps:
       - checkout
       - run:
+        name: building docker image
+        command: |
+          docker build -t tts .
+          docker images
+          docker tag tts $DOCKER_USERNAME/tts
+      -run:
+        name: pushing docker image
+          docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+          docker push $DOCKER_USERNAME/tts
+      - run:
           name: Deploy app to Digital Ocean Server via Docker
           command: |
-           chmod 600 deploy_key && ssh -o StrictHostKeyChecking=no -i deploy_key texttrack@68.183.197.37 sudo /usr/local/circleci/deploy.sh
-             
+           ssh -o StrictHostKeyChecking=no texttrack@ritz-tts4.freddixon.ca sudo /usr/local/circleci/deploy.sh
