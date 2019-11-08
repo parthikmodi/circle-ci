@@ -16,7 +16,7 @@ jobs:
           docker build -t tts .
           docker images
           docker tag tts $DOCKER_USERNAME/tts
-      -run:
+      - run:
         name: pushing docker image
           docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
           docker push $DOCKER_USERNAME/tts
